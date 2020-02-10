@@ -1,0 +1,42 @@
+﻿@model SistemaRecados.Models.Recado
+
+<script>
+    function enviar() {
+        var form = document.getElementById('formNovo');
+        form.submit();
+    }
+</script>
+
+<form name="formNovo" asp-action="NovoRecado">
+    <div class="row">
+        <div class="col-md-12">
+            
+                <label asp-for="Mensagem" class="control-label label-sm"></label>
+                <textarea asp-for="Mensagem" id="btn-input" type="text" class="form-control input-sm" placeholder="Escreva sua mensagem aqui...">
+                </textarea>
+
+            
+        </div>
+        <div class="col-md-6 col-lg-offset-6">
+            <div class="form-group">
+
+                <label asp-for="Autor" class="control-label label-sm"></label>
+
+                <input asp-for="Autor" class="form-control input-sm" placeholder="Deseja se identificar? Digite seu nome aqui..." />
+                <span asp-validation-for="Autor" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+
+                <button class="btn btn-primary btn-sm pull-right" id="btn-chat" onclick="enviar()">Publicar Recado</button>
+
+            </div>
+
+            
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
